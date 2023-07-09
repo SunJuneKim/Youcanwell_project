@@ -5,8 +5,14 @@
     <title>마이페이지</title>
     <style>
         body {
-            margin: 0;
+            margin: 150px auto;
             padding: 0;
+            width: 850px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid black;
         }
 
         .content {
@@ -47,8 +53,8 @@
             bottom: -5px;
             left: 0;
             width: 200px;
-            height: 2px;
-            background-color: #ae3ec9;
+            height: 1.5px;
+            background-color: #d279e8;
         }
 
         .user-info p {
@@ -64,8 +70,8 @@
             bottom: -5px;
             left: 0;
             width: 200px;
-            height: 2px;
-            background-color: #ae3ec9;
+            height: 1.5px;
+            background-color: #d279e8;
         }
 
         .group2 {
@@ -122,13 +128,12 @@
 
 <body>
     <div class="header">
-        <!-- Header content -->
     </div>
     <div class="content">
         <div class="profile">
             <div class="profile-image"></div>
             <div class="user-info">
-                <h3>이름: test</h3>
+                <p>이름: test</p>
                 <p>이메일: 123@naver.com</p>
             </div>
         </div>
@@ -156,20 +161,16 @@
         const buttons = document.querySelectorAll('.group2 button');
         const contents = document.querySelectorAll('.group3 .note-template');
 
-        // 초기 선택 설정
         buttons[0].classList.add('selected');
         contents[0].style.display = 'block';
 
-        // 버튼 클릭 이벤트 처리
         buttons.forEach((button, index) => {
             button.addEventListener('click', () => {
-                // 선택된 버튼에 클래스 추가 및 해당 내용 표시
                 buttons.forEach((btn) => {
                     btn.classList.remove('selected');
                 });
                 button.classList.add('selected');
 
-                // 해당 내용 표시
                 contents.forEach((content, idx) => {
                     if (idx === index) {
                         content.style.display = 'block';
