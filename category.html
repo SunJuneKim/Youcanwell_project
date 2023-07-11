@@ -6,15 +6,12 @@
     <style>
         body {
             margin: 150px auto;
-            /* 상단 간격 150px, 가운데 정렬 */
             padding: 0;
             width: 850px;
             height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            border: 1px solid black;
-            /* 세로 가운데 정렬 */
         }
 
         .header {
@@ -62,47 +59,6 @@
             margin-right: 5px;
         }
 
-        .content {
-            display: flex;
-            justify-content: center;
-        }
-
-        .content-item {
-            margin: 0 2px;
-            background-color: #0C00A5;
-            width: 75px;
-            height: 75px;
-            font-size: 45px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-
-        .content-item:last-child {
-            background-color: #FFCE00;
-        }
-
-        .content2 {
-            display: grid;
-            grid-template-columns: repeat(2, 150px);
-            grid-template-rows: repeat(3, 150px);
-            gap: 5px;
-            margin-top: 30px;
-            justify-content: center;
-        }
-
-        .content2-item {
-            background-color: #0C00A5;
-            width: 150px;
-            height: 150px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 40px;
-            color: white;
-        }
-
         section {
             border: 2px solid #0C00A5;
             margin-top: 80px;
@@ -136,15 +92,23 @@
             justify-content: center;
         }
 
-        .search {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            width: 470px;
-            transform: translateX(-50px);
-            margin-top: 0px;
-            border-radius: 8px;
+        .selected-category {
+            font-size: 25px;
+            text-align: center;
+            color: #0C00A5;
         }
+
+        .search {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 470px;
+    transform: translateX(-50px);
+    border-radius: 8px;
+    background-color: white;
+    border: 2px solid #0C00A5;
+    margin-top: 3px;
+}
 
         .search i {
             margin-left: 10px;
@@ -157,37 +121,43 @@
         }
 
         .search input {
-            width: 90%;
+            width: 100%;
             padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            border: none;
+            background-color: transparent;
         }
     </style>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 </head>
 
 <body>
     <div class="header">
         <div class="div1"></div>
         <div class="div2">
-            <a href="main.html">
-                코스 등록
+            <a href="main.html" style="text-decoration: none;">
+                등록
             </a>
         </div>
     </div>
     <section>
         <div class="design"></div>
-        <div class="category">선택된 카테고리</div>
+        <div class="category selected-category" id="selectedCategory"></div>
     </section>
-    <section class="search">
+
+    <div class="search">
         <i class="fas fa-search"></i>
         <div class="search-input">
             <input type="text" placeholder="#코스 태그 검색">
         </div>
-    </section>
+    </div>
 
+    <script>
+        var selectedCategory = localStorage.getItem('selectedCategory');
+        if (selectedCategory) {
+            document.getElementById('selectedCategory').textContent = selectedCategory;
+        }
+    </script>
 </body>
 
 </html>
