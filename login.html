@@ -4,15 +4,15 @@
 <head>
   <title>로그인 화면</title>
   <style>
-        body {
-            margin: 150px auto;
-            padding: 0;
-            width: 850px;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    body {
+      margin: 0px auto;
+      padding: 0;
+      width: 850px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
     .container {
       width: 420px;
@@ -39,6 +39,9 @@
       justify-content: center;
       align-items: center;
       background-color: #0C00A5;
+    }
+    .logo:last-child{
+      background-color:#ffd700;
     }
 
     .logo span {
@@ -72,19 +75,25 @@
       border-radius: 10px;
       font-size: 18px;
       font-weight: bold;
+      cursor: pointer;
+    }
+
+    .login-button:hover {
+      background-color: #ffdd00;
     }
 
     .social-login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px; 
-}
-.find-links a {
-  text-decoration: none;
-  color: inherit;
-  font-size: 15px;
-}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px; 
+    }
+
+    .find-links a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 15px;
+    }
   </style>
   <link rel="stylesheet" href="styles.css"> 
 </head>
@@ -105,21 +114,67 @@
       </div>
     </div>
     <div class="login-form">
-      <input type="text" placeholder="아이디">
-      <input type="password" placeholder="비밀번호">
+      <input type="text" id="username-input" placeholder="아이디">
+      <input type="password" id="password-input" placeholder="비밀번호">
     </div>
-    <button class="login-button">
-      로그인
-    </button>
+    <button class="login-button" onclick="handleLogin()">로그인</button>
     <div class="social-login">
-      <img src="1.png" alt="카카오톡 아이콘" width="30" height="30">
-      <img src="2.png" alt="네이버 아이콘" width="30" height="30">
+      <a href="#" onclick="openKakaoLoginPopup()">
+        <img src="1.png" alt="카카오톡 아이콘" width="30" height="30">
+      </a>
+      <a href="#" onclick="openNaverLoginPopup()">
+        <img src="2.png" alt="네이버 아이콘" width="30" height="30">
+      </a>
     </div>
     <div class="find-links">
-        <a href="#">아이디 찾기</a> |
-        <a href="#">비밀번호 찾기</a> |
-        <a href="signup.html">회원가입</a>
-      </div>
+      <a href="#">아이디 찾기</a> |
+      <a href="#">비밀번호 찾기</a> |
+      <a href="signup.html">회원가입</a>
+    </div>
   </div>
+
+  <script>
+    function handleLogin() {
+      var usernameInput = document.getElementById("username-input").value;
+      var passwordInput = document.getElementById("password-input").value;
+
+      // 여기에서 백엔드 서버와의 로그인 처리를 구현해야 함.
+      // 로그인이 성공했다고 가정하고 
+      if (usernameInput === "admin" && passwordInput === "1234") {
+        alert("로그인 성공");
+        window.location.href = "main.html";
+      } else {
+        alert("아이디 또는 비밀번호가 잘못되었습니다.");
+      }
+    }
+
+    function openKakaoLoginPopup() {
+      // 팝업창을 열어서 카카오톡 로그인 진행.
+      // 카카오 로그인 API 호출을 가정한 예시 코드
+      var apiKey = "9d53afc48c5f42da2adbe86d555a11f3"; // 카카오 로그인 API 키 (임의의 값)
+      var loginUrl = "https://kakao.com/login?api_key=" + apiKey;
+
+      var popupWidth = 500;
+      var popupHeight = 600;
+      var left = window.screen.width / 2 - popupWidth / 2;
+      var top = window.screen.height / 2 - popupHeight / 2;
+
+      window.open(loginUrl, "Kakao Login", "width=" + popupWidth + ",height=" + popupHeight + ",top=" + top + ",left=" + left);
+    }
+
+    function openNaverLoginPopup() {
+      // 팝업창을 열어서 네이버 로그인 진행.
+      // 네이버 로그인 API 호출을 가정한 예시 코드
+      var apiKey = "9d53afc48c5f42da2adbe86d555a11f3"; // 네이버 로그인 API 키 (임의의 값)
+      var loginUrl = "https://naver.com/login?api_key=" + apiKey;
+
+      var popupWidth = 500;
+      var popupHeight = 600;
+      var left = window.screen.width / 2 - popupWidth / 2;
+      var top = window.screen.height / 2 - popupHeight / 2;
+
+      window.open(loginUrl, "Naver Login", "width=" + popupWidth + ",height=" + popupHeight + ",top=" + top + ",left=" + left);
+    }
+  </script>
 </body>
 </html>

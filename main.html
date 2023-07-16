@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>메인 화면</title>
     <style>
@@ -35,10 +34,16 @@
             font-size: 25px;
         }
 
-        .div2 img {
-            width: 20px;
-            height: 20px;
+        .div2 a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #0C00A5;
+        }
+
+        .div2 .icon {
             margin-right: 5px;
+            font-size: 20px;
         }
 
         .content {
@@ -97,15 +102,16 @@
         }
     </style>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
     <div class="header">
         <div class="div1"></div>
         <div class="div2">
-            <a href="main.html" style="text-decoration: none;">
-                <img src="icon.png" alt="icon">
-                메인 페이지
+            <a href="mypage.html">
+                <i class="icon fas fa-user"></i>
+                마이페이지
             </a>
         </div>
     </div>
@@ -126,6 +132,7 @@
         </div>
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <script>
         function selectCategory(element) {
             var category = element.textContent;
